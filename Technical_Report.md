@@ -1,41 +1,61 @@
-# subid Technical Report
-
 **Technical Report: Enhancing DevOps Practices for Subsocial's Sub.ID**
 
 **Objective**
-
 To review and optimize the DevOps practices for Sub.ID, encompassing both front-end and back-end components. The aim is to augment system efficiency, elevate code quality, and ensure a streamlined development and deployment lifecycle.
 
 **Build Speed Optimization**
 
 **Frontend Service**
-
 **Evaluation Strategy:**
-
 **Build Scripts & Bundle Analysis**: Utilize Webpack bundle analyzers and TypeScript configurations. Run scripts to monitor build times and output sizes, identifying large dependencies or chunks that may slow down the build process.
-
 **Profiling Build Performance**: Implement profiling tools to identify time-consuming processes within the build. Optimize loaders, plugins, and TypeScript compiler options for speed.
 
 **Implementation**:
-
 **Incremental Builds:** Leverage TypeScript's incremental compilation to speed up rebuilds.
-
 **Dependency Optimization**: Regularly prune and update dependencies to reduce build time.
 
-
 **Backend Service (subid-api)**
-
 **Evaluation Strategy:**
-
 **TypeScript Compilation:** Assess the TypeScript compilation process, focusing on the compiler options set in tsconfig.release.json.
-
 **Dependency Review:** Examine the package.json for any redundant dependencies that could be contributing to a longer build time.
 
 **Implementation:**
-
 **Caching Mechanisms:** Introduce caching strategies for dependencies and compiled outputs to accelerate subsequent builds.
-
 **Continuous Integration Optimization:** Enhance CI/CD pipeline configurations for efficiency, utilizing caching and parallel build techniques where available.
+
+**Optimizing Dockerfile for Frontend and Backend**
+
+Optimizing Dockerfiles for both frontend and backend applications involves several strategies focused on reducing build time, minimizing image size, and ensuring security and efficiency. Here's how you can optimize Dockerfiles:
+
+**Use Multi-Stage Builds:**
+Multi-stage builds in Docker are designed to optimize the size and security of your images by allowing multiple FROM statements in a Dockerfile. Each FROM instruction can use a different base, and only the final stage will be used to form the final image.
+**Frontend:** Compile and build the frontend application in an initial stage using a Node.js image. Then, copy the production build into a lightweight Nginx image for serving.
+**Backend:** Compile the backend application in a build environment and then copy the executables or required files into a slim or Alpine image.
+
+**Select Appropriate Base Images:**
+Choosing the right base image can significantly impact the build speed and size.
+**Alpine Linux:** Consider using Alpine Linux as a base due to its small footprint. For Node.js applications, use node:alpine.
+**Slim Variants:** Look for slim variants of official images which are smaller and contain fewer packages.
+
+**Organize Instructions Efficiently:**
+The order of instructions in a Dockerfile can affect caching and thereby the build speed.
+**Cache Expensive Instructions:** Place instructions that don't change often at the beginning of your Dockerfile, like installing dependencies. This way, Docker can cache these layers and speed up subsequent builds.
+**Group Commands:** Use && to chain related commands together in a single RUN instruction to reduce layers, like updating packages and installing dependencies.
+
+**Remove Unnecessary Files:**
+After building the application, remove unnecessary files and directories that won't be needed in the final image.
+**Cleanup in Build Stage:** In the build stage, clean up any temporary files or directories created during the build process.
+**Use .dockerignore:** Include a .dockerignore file in your project to prevent unnecessary files from being added to the Docker context, speeding up the build process.
+
+**Optimize for Cache Usage:**
+Docker uses a build cache. If Docker detects that a layer hasn't changed, it will reuse the cached layer, speeding up the build significantly.
+**Order By Change Frequency:** Add instructions that change more frequently (like copying application code) towards the end of the Dockerfile so that the build cache for the layers containing dependencies and other infrequent changes can be reused.
+
+**Security Scans and Minimization:**
+Ensure your image is free from known vulnerabilities and minimized in terms of attack surface.
+**Security Scanning:** Use tools like Docker Bench or Clair to scan your images for vulnerabilities and fix issues before deploying.
+**Non-Root User:** Run applications as a non-root user whenever possible to improve the security of your containers.
+
 
 **Workflow Enhancements**
 
