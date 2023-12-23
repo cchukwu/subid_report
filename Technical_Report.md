@@ -58,6 +58,97 @@ Ensure your image is free from known vulnerabilities and minimized in terms of a
 
 **Workflow Enhancements**
 
+**CICD**
+Continuous Integration/Continuous Deployment (CI/CD) strategy for both the frontend and backend components of the service. This strategy encompasses Git branching strategies, Pull Requests (PRs), vulnerability scanning, image building, registry management, deployment to Kubernetes, and monitoring and logging.
+
+**Source Control and Branching Strategy**
+
+**Git Branching Strategy:**
+**Main Branch:** Stable code that reflects the production-ready state.
+**Develop Branch:** Integration branch for features, fixes, and other code changes.
+**Feature Branches:** Individual branches created from develop for new features or changes.
+**Release Branches:** Temporary branches created from develop to prepare for a production release.
+**Hotfix Branches:** Direct branches from main to fix urgent bugs in production.
+
+**Pull Requests and Merging:**
+Require PRs for merging any code into the main and develop branches.
+Enforce code reviews, successful automated tests, and code analysis checks before merging.
+
+**Continuous Integration (CI) Pipeline**
+
+**On Commit/PR to Develop:**
+**Automated Testing:** Execute unit and integration tests.
+**Code Quality Analysis:** Run static code analysis and linters.
+**Security Scanning:** Perform vulnerability scanning on code and dependencies.
+
+**On Merge to Main (Release Preparation):**
+**Staging Build and Deploy:** Automatically deploy to a staging environment for final validation.
+**Tagging Releases:** Use semantic versioning to tag releases.
+
+**Continuous Deployment (CD) Pipeline**
+
+**Deployment Environments:**
+**Development:** For daily development work.
+**Staging:** A mirror of production for final testing.
+**Production:** The live user-facing environment. 
+
+**Deployment Workflow:**
+**Automated Deployment:** Use ArgoCD or a similar GitOps tool for automatic deployment based on Git state.
+**Rollback Mechanism:** Ensure easy rollback to previous stable versions in case of failure.
+**Environment-Specific Configurations:** Use Kustomize or Helm for managing different configurations for each environment.  Docker Image Building and Registry
+
+**Image Building:**
+Build Docker images using unique tags, typically with the commit hash or semantic version.
+Optimize Dockerfiles for speed and security (as previously discussed).
+
+**Docker Registry:**
+Push images to a secure, private Docker registry.
+Implement access controls and scan images for vulnerabilities upon push.
+
+**Deployment to Kubernetes**
+
+**Kubernetes Manifests:** Manage with GitOps tooling, ensuring that changes are peer-reviewed.
+**Resource Optimization:** Use HPA and VPA for efficient resource utilization.
+**Namespace Separation:** Separate namespaces for different environments to isolate and manage resources effectively.
+**Secrets Management:** Use Kubernetes secrets or integrate with external secret managers like HashiCorp Vault or AWS Secrets Manager.
+
+**Monitoring and Logging**
+
+**Monitoring:**
+Implement a monitoring solution like Prometheus for real-time metrics and alerts.
+Use Grafana for dashboards and visualization.
+
+**Logging:**
+Aggregate logs using a solution like Fluentd.
+Store logs in a centralized system like Elasticsearch, and visualize using Kibana.
+You can also use Loki to ship logs to a central location, and allow visualisation of the logs using Grafana.
+
+**Performance Tracking:**
+Integrate Application Performance Monitoring (APM) tools like New Relic or Datadog for detailed insights.
+
+**Security and Compliance**
+
+**Vulnerability Scanning:** Integrate tools like Clair, Trivy, or Snyk in the CI pipeline.
+**Code Security:** Use automated scanning for secrets or credentials in the codebase.
+**Access Control:** Implement RBAC in Kubernetes and restrict access based on the principle of least privilege.
+
+**Best Practices and Policies**
+
+**Documentation:** Maintain up-to-date documentation for the CI/CD process, including diagrams and instructions.
+**Training:** Provide regular training and updates to the team on CI/CD processes and tools.
+**Policy Enforcement:** Enforce policies for coding standards, security, and testing.
+
+
+
+
+
+
+
+
+
+
+
+
 **Infrastructure as Code (IaC) and GitOps**
 
 **Tools & Implementation:**
