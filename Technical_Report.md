@@ -19,7 +19,9 @@ To review and optimize the DevOps practices for Sub.ID, encompassing both front-
 **Implementation**:
 
 **Incremental Builds:** Leverage TypeScript's incremental compilation to speed up rebuilds.
+
 **Dependency Optimization**: Regularly prune and update dependencies to reduce build time.
+
 
 **Backend Service (subid-api)**
 
