@@ -56,7 +56,6 @@ Ensure your image is free from known vulnerabilities and minimized in terms of a
 **Security Scanning:** Use tools like Docker Bench or Clair to scan your images for vulnerabilities and fix issues before deploying.
 **Non-Root User:** Run applications as a non-root user whenever possible to improve the security of your containers.
 
-
 **Workflow Enhancements**
 
 **Infrastructure as Code (IaC) and GitOps**
