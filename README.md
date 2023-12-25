@@ -60,7 +60,7 @@ Ensure your image is free from known vulnerabilities and minimized in terms of a
 **Security Scanning:** Use tools like Docker Bench or Clair to scan your images for vulnerabilities and fix issues before deploying.
 **Non-Root User:** Run applications as a non-root user whenever possible to improve the security of your containers.
 
-=======================================================================================================
+=====================================================================================================
 
 **Workflow Enhancements**
 
@@ -185,7 +185,7 @@ Review caching strategies for node modules and other dependencies to ensure they
 By systematically addressing each area and integrating these tools and methodologies, the backend development and deployment processes can be significantly enhanced, leading to improved efficiency, better collaboration, and a more streamlined development lifecycle. Regularly reviewing and updating these workflows as the team's needs and technologies evolve is also essential for maintaining an effective CI/CD pipeline.
 
 
-=======================================================================================================
+=====================================================================================================
 
 **Code Readability and Maintainability**
 
