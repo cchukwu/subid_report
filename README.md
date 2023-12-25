@@ -5,7 +5,7 @@
 **Objective**
 To review and optimize the DevOps practices for Sub.ID, encompassing both front-end and back-end components. The aim is to augment system efficiency, elevate code quality, and ensure a streamlined development and deployment lifecycle.
 
-===================================================================================================
+=====================================================================================================
 
 **Build Speed Optimization**
 
