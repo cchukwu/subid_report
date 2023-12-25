@@ -60,8 +60,40 @@ Ensure your image is free from known vulnerabilities and minimized in terms of a
 
 **Workflow Enhancements**
 
-**CICD**
-Continuous Integration/Continuous Deployment (CI/CD) strategy for both the frontend and backend components of the service. This strategy encompasses Git branching strategies, Pull Requests (PRs), vulnerability scanning, image building, registry management, deployment to Kubernetes, and monitoring and logging.
+**Frontend**
+
+Analyzing the provided GitHub Actions files for the frontend application reveals several opportunities for optimization and improvement. Here's a breakdown of each file and suggested enhancements:
+
+**##.github/workflows/check-build-front.yml**
+
+**Matrix Strategy for Node Versions:** If multiple versions of Node.js are not needed for testing, simplifying the matrix to a single version can speed up the build process.
+**Caching Strategy:** Ensure that the caching strategy effectively caches and reuses node modules to speed up subsequent builds.
+**Code Quality Tools:** Integrate additional code quality tools like ESLint as part of the build process rather than commenting them out. Ensure they are configured correctly to provide meaningful feedback.
+
+**##.github/workflows/feature-based-delete.yml**
+
+**Conditional Steps:** Ensure that the conditional steps are necessary and optimized. Removing unnecessary or redundant steps can speed up the process.
+**Error Handling:** Improve error handling for network requests and external tool invocations (like doctl) to ensure smooth CI runs and better debugging.
+**Cloudflare API Interaction:** If the interaction with Cloudflare's API is common across workflows, consider creating a reusable GitHub Action or script to standardize these calls.
+
+**##.github/workflows/feature-based.yaml**
+
+**Docker Build Context:** Ensure that the Docker build context is as small as possible to speed up the build process. Consider using a .dockerignore file to exclude unnecessary files.
+**Build Arguments:** Review and optimize the build arguments used in the Docker build process. Ensure that only necessary arguments are passed and that they are secure.
+**Deployment Scripts:** Ensure that the Kubernetes deployment scripts are well-organized and maintained. Look for opportunities to modularize and reuse deployment configurations using Kustomize or Helm.
+
+**##.github/workflows/front.yml**
+
+**Branching Conditions:** The workflow runs on push to staging and main branches. Ensure that these conditions are still relevant and that there's no overlap or redundancy with other workflows.
+**Docker Image Tagging:** Use a consistent tagging strategy for Docker images. Consider integrating the Git tag or release version into the image tag for better traceability.
+**Deployment Process:** Review the deployment steps to ensure they are efficient and secure. Look for any hardcoded values or configurations that could be externalized or made more dynamic.
+
+**##.github/workflows/manual.yml**
+
+**Manual Trigger:** Since this is manually triggered, ensure that there's clear documentation on when and how to use this workflow. Consider adding input parameters to the workflow dispatch event for more flexible deployments.
+**Deployment Consistency:** Ensure that the manual deployment process is consistent with automated deployments in terms of steps and configurations. Any discrepancies can lead to unexpected behavior or errors.
+
+
 
 **Source Control and Branching Strategy**
 
