@@ -91,6 +91,8 @@ Upon analyzing the provided GitHub Actions workflows for the frontend applicatio
 
 ##**Consolidate Workflows:** The current setup includes multiple workflows for similar tasks (e.g., building, deploying). Consolidate these into fewer, more comprehensive workflows with conditional steps based on branches or tags to simplify maintenance and improve clarity.
 
+##**Notification of build steps:** Build stage notifications to slack or any preferred messaging channels for tracking CICD pipeline
+
 ##**Optimize Docker Builds:**
 Review Dockerfiles for each frontend service and ensure they are optimized for caching and size. Consider multi-stage builds to reduce final image size.
 Leverage build caching in the GitHub Actions docker/build-push-action to speed up repeated builds.
@@ -162,6 +164,8 @@ Upon reviewing the GitHub Actions files for the backend application, here are so
 
 ##**Consolidate Similar Jobs:** There are multiple workflows for building, testing, and deploying the application. If the steps are similar, consider consolidating them into a single workflow with conditional steps or jobs to maintain simplicity and reduce duplication.
 
+##**Notification of build steps:** Just as stated for the frontend service, notifications to slack or any preferred messaging channels for the stages of the CICD pipeline for tracking and visibility.
+
 ##**Use Matrix Strategy Wisely:** Currently, there's a matrix strategy used in some workflows for different node versions. If multiple versions are not needed, simplifying or removing the matrix can reduce complexity and build times.
 
 ##**Optimize Docker Builds:**
@@ -198,7 +202,6 @@ Implement notification systems for any errors or manual interventions required d
 ##**Monitoring and Logging for Workflows:** Integrate monitoring tools to measure and optimize workflow execution times. Also, ensure logs are available and monitored for all actions, especially deployment steps.
 
 ##**Documentation and Knowledge Sharing:** Regularly update workflow documentation to reflect the current state of CI/CD processes. Encourage knowledge sharing sessions for the team to understand and contribute to workflow optimizations.
-
 
 ##**Specific Recommendations for Provided Workflows:**
 
