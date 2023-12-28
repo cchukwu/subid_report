@@ -68,7 +68,15 @@ Ensure your image is free from known vulnerabilities and minimized in terms of a
 
 Upon analyzing the provided GitHub Actions workflows for the frontend application, several enhancements can be made to streamline the development process and introduce tools and methodologies that enhance collaboration and efficiency among development teams. Here are some proposed improvements:
 
-**Workflow Enhancements:**
+**Frontend Workflows**
+
+**check-build-front.yml:** This workflow is designed for building the front-end upon pull requests. Notably, it lacks comprehensive testing and only supports one version of Node.js. There is a TODO item to configure ESLint properly, suggesting incomplete code quality checks.
+
+**feature-based-delete.yml:** It handles the cleanup of resources post-merge. This workflow could be more efficient and robust in handling errors and ensuring complete cleanup.
+
+**feature-based.yaml:** Manages the CI/CD of feature branches, including building and deploying. The workflow can be optimized for caching and needs a more dynamic handling of branch-specific deployments.
+
+**Frontend Workflow Enhancements:**
 
 **Consolidate Workflows:** The current setup includes multiple workflows for similar tasks (e.g., building, deploying). Consolidate these into fewer, more comprehensive workflows with conditional steps based on branches or tags to simplify maintenance and improve clarity.
 
@@ -76,11 +84,18 @@ Upon analyzing the provided GitHub Actions workflows for the frontend applicatio
 Review Dockerfiles for each frontend service and ensure they are optimized for caching and size. Consider multi-stage builds to reduce final image size.
 Leverage build caching in the GitHub Actions docker/build-push-action to speed up repeated builds.
 
-**Refine Matrix Builds:** The matrix strategy for node versions is used in check-build-front.yml. If supporting multiple node versions is not necessary, consider simplifying or removing the matrix to streamline the build process.
+**check-build-front.yml:**
+Integrate comprehensive testing including unit, integration, and end-to-end tests.
+Properly configure ESLint and include other code quality tools like Prettier or SonarQube.
+Utilize caching more effectively for node modules and build outputs.
 
-**Improve Branch Management:** Ensure that the branching strategy in GitHub Actions reflects the team's workflow. Consider using a naming convention for feature branches and have specific actions triggered based on the branch naming patterns.
+**feature-based-delete.yml:**
+Improve the robustness of the cleanup process, ensuring all related resources are effectively removed.
+Integrate error handling and logging to catch and report any issues during cleanup.
 
-**Automate Cleanup:** Enhance the cleanup process in feature-based-delete workflows to ensure that resources are efficiently managed and any temporary or feature-specific deployments are properly cleaned up after merging or closing PRs.
+**feature-based.yaml:**
+Implement dynamic environment configurations to handle different scenarios based on the branch or tag.
+Optimize Docker image building with better caching and smaller context transfers.
 
 **Introduction of Tools and Methodologies:**
 
@@ -124,6 +139,14 @@ By implementing these enhancements and integrating new tools and methodologies, 
 
 Upon reviewing the GitHub Actions files for the backend application, here are some workflow enhancements and tool introductions that can help streamline the development process, enhance collaboration, and improve overall efficiency:
 
+**Backend Workflows**
+
+**backend.yml:** Similar to the frontend, it handles the build and deployment but only for the staging and main branches. The workflow could benefit from a more dynamic handling of environments and versioning of Docker images.
+
+**check-build-back.yml:** Focuses on build verification for pull requests. This workflow is minimal and could include more comprehensive testing and quality checks.
+
+**feature-based-delete.yml:** Aims to delete backend features once merged. This workflow shares the same inefficiencies as its frontend counterpart, with potential improvements in cleanup and error handling.
+
 **Workflow Enhancements:**
 
 **Consolidate Similar Jobs:** There are multiple workflows for building, testing, and deploying the application. If the steps are similar, consider consolidating them into a single workflow with conditional steps or jobs to maintain simplicity and reduce duplication.
@@ -135,13 +158,17 @@ Ensure that Dockerfiles are optimized for caching and build speed.
 Use multi-stage builds if not already doing so to minimize the final image size.
 Consolidate common build steps into custom base images.
 
-**Streamline Conditional Logic:** There are various conditions used throughout the workflows. Review and ensure that all conditions are necessary and reflect the current branching and deployment strategy accurately.
+**backend.yml:**
+Include a dynamic tagging strategy for Docker images to facilitate better version control and rollback capabilities.
+Extend the workflow to cover more scenarios beyond staging and main, like feature branches or hotfixes.
 
-**Enhance Security Measures:**
-Rotate and manage secrets securely.
-Ensure that all sensitive operations are audited and logged.
+**check-build-back.yml:**
+Integrate a wider array of tests to ensure backend robustness.
+Include static code analysis and security scanning in the workflow.
 
-**Efficient Resource Utilization:** For tasks that can run in parallel, structure the workflow to take advantage of parallel execution to reduce wait times.
+**feature-based-delete.yml:**
+Enhance cleanup procedures with comprehensive resource tracking and removal.
+Implement notification systems for any errors or manual interventions required during cleanup.
 
 **Tool and Methodology Introductions:**
 
