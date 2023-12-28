@@ -10,7 +10,8 @@ To review and optimize the DevOps practices for Sub.ID, encompassing both front-
 **Build Speed Optimization**
 
 **Frontend Service**
-**Evaluation Strategy:**
+**Evaluation Strategy**
+
 **Build Scripts & Bundle Analysis**: Utilize Webpack bundle analyzers and TypeScript configurations. Run scripts to monitor build times and output sizes, identifying large dependencies or chunks that may slow down the build process.
 **Profiling Build Performance**: Implement profiling tools to identify time-consuming processes within the build. Optimize loaders, plugins, and TypeScript compiler options for speed.
 
@@ -19,7 +20,8 @@ To review and optimize the DevOps practices for Sub.ID, encompassing both front-
 **Dependency Optimization**: Regularly prune and update dependencies to reduce build time.
 
 **Backend Service (subid-api)**
-**Evaluation Strategy:**
+**Evaluation Strategy**
+
 **TypeScript Compilation:** Assess the TypeScript compilation process, focusing on the compiler options set in tsconfig.release.json.
 **Dependency Review:** Examine the package.json for any redundant dependencies that could be contributing to a longer build time.
 
