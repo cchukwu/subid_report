@@ -1,16 +1,17 @@
 ## README
 
-**Technical Report: Enhancing DevOps Practices for Subsocial's Sub.ID**
+## **Technical Report: Enhancing DevOps Practices for Subsocial's Sub.ID**
 
 **Objective**
 To review and optimize the DevOps practices for Sub.ID, encompassing both front-end and back-end components. The aim is to augment system efficiency, elevate code quality, and ensure a streamlined development and deployment lifecycle.
 
 =====================================================================================================
 
-**Build Speed Optimization**
+##**Build Speed Optimization**
 
-**Frontend Service**
-**Evaluation Strategy**
+##**Frontend Service**
+
+##**Evaluation Strategy**
 
 **Build Scripts & Bundle Analysis**: Utilize Webpack bundle analyzers and TypeScript configurations. Run scripts to monitor build times and output sizes, identifying large dependencies or chunks that may slow down the build process.
 **Profiling Build Performance**: Implement profiling tools to identify time-consuming processes within the build. Optimize loaders, plugins, and TypeScript compiler options for speed.
