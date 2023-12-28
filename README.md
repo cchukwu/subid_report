@@ -13,26 +13,31 @@ To review and optimize the DevOps practices for Sub.ID, encompassing both front-
 
 ##**Evaluation Strategy**
 
-**Build Scripts & Bundle Analysis**: Utilize Webpack bundle analyzers and TypeScript configurations. Run scripts to monitor build times and output sizes, identifying large dependencies or chunks that may slow down the build process.
-**Profiling Build Performance**: Implement profiling tools to identify time-consuming processes within the build. Optimize loaders, plugins, and TypeScript compiler options for speed.
+##**Build Scripts & Bundle Analysis**: Utilize Webpack bundle analyzers and TypeScript configurations. Run scripts to monitor build times and output sizes, identifying large dependencies or chunks that may slow down the build process.
+
+##**Profiling Build Performance**: Implement profiling tools to identify time-consuming processes within the build. Optimize loaders, plugins, and TypeScript compiler options for speed.
 
 ##**Implementation**:
 
-**Incremental Builds:** Leverage TypeScript's incremental compilation to speed up rebuilds.
-**Dependency Optimization**: Regularly prune and update dependencies to reduce build time.
+##**Incremental Builds:** Leverage TypeScript's incremental compilation to speed up rebuilds.
+
+##**Dependency Optimization**: Regularly prune and update dependencies to reduce build time.
 
 ##**Backend Service (subid-api)**
 
 ##**Evaluation Strategy**
 
-**TypeScript Compilation:** Assess the TypeScript compilation process, focusing on the compiler options set in tsconfig.release.json.
-**Dependency Review:** Examine the package.json for any redundant dependencies that could be contributing to a longer build time.
+##**TypeScript Compilation:** Assess the TypeScript compilation process, focusing on the compiler options set in tsconfig.release.json.
 
-**Implementation:**
-**Caching Mechanisms:** Introduce caching strategies for dependencies and compiled outputs to accelerate subsequent builds.
-**Continuous Integration Optimization:** Enhance CI/CD pipeline configurations for efficiency, utilizing caching and parallel build techniques where available.
+##**Dependency Review:** Examine the package.json for any redundant dependencies that could be contributing to a longer build time.
 
-**Optimizing Dockerfile for Frontend and Backend**
+##**Implementation:**
+
+##**Caching Mechanisms:** Introduce caching strategies for dependencies and compiled outputs to accelerate subsequent builds.
+
+##**Continuous Integration Optimization:** Enhance CI/CD pipeline configurations for efficiency, utilizing caching and parallel build techniques where available.
+
+##**Optimizing Dockerfile for Frontend and Backend**
 
 Optimizing Dockerfiles for both frontend and backend applications involves several strategies focused on reducing build time, minimizing image size, and ensuring security and efficiency. Here's how you can optimize Dockerfiles:
 
